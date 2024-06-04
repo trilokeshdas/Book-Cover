@@ -12,9 +12,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 const db= new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "bookcover",
+  user: process.env.USER,
+  host: process.env.HOST,
+  database: process.env.DATABASE,
   password:process.env.PASSWORD,
   port: "5432"
 });
