@@ -1,0 +1,52 @@
+<%- include("partials/header.ejs") %>
+<div class="container px-5">
+ <div class="row px-5">
+  <div class="px-5">
+  <form action="/add" method="post">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" name="title" placeholder="Book Title" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text">Key content</span>
+        <textarea class="form-control" name="content" aria-label="With textarea"></textarea>
+        </div>
+     <div class="input-group mb-3 size">
+    <input type="text" class="form-control" name="isbn" placeholder="*ISBN Number(10-digits)" aria-label="Username">
+    <input type="text" class="form-control" name="rating" placeholder="Rating" aria-label="Server">
+    <button  class="btn btn-success">Submit</button>
+    </div>
+  </form>
+  
+    </div>
+  </div>
+</div>
+</section>
+<section>
+    <div class="container px-5">
+        <% for(let b of book){ %>
+        <div class="row my-4">
+            <div class="col-lg-3">
+                <img src="<%= b.url %>" alt="">
+            </div>
+            <div class="col-lg-9">
+                <h1><%= b.title %></h1>
+                <h5>Rating: <%= b.rating %></h5>
+                <p><%= b.content %></p>
+                <form class="pb-2" action="/update" method="post">
+                  <input type="hidden" class="form-control" name="id" value="<%= b.id %>" aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="hidden" class="form-control" name="title" value="<%= b.title %>" aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="hidden" class="form-control" name="rating" value="<%= b.rating %>" aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="hidden" class="form-control" name="content" value="<%= b.content %>" aria-label="Username" aria-describedby="basic-addon1">
+                  <button class="btn btn-primary">Update</button>
+                </form>
+                <form action="/delete" method="post">
+                  <input type="hidden" name="id" value="<%= b.id %>">
+                  <button  class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+        <% } %>
+    </div>
+    <p style="padding-left: 50px;" class="roboto-medium-italic"><span style="color: red;">*</span>Find the isbn number that is written above the barcode behind the book or search from internet</p>
+  </section>
+<%- include("partials/footer.ejs") %>

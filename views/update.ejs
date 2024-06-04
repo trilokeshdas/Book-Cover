@@ -1,0 +1,22 @@
+<%- include("partials/header.ejs") %>
+<div class="container px-5">
+    <div class="row px-5">
+     <div class="px-5">
+     <form action="/edit" method="post">
+         <div class="input-group mb-3">
+           <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Book Title" aria-label="Username" aria-describedby="basic-addon1">
+         </div>
+         <div class="input-group mb-3">
+           <span class="input-group-text">Key content</span>
+           <textarea class="form-control" style="height: 100px;" name="content" value="<%= content %>" aria-label="With textarea"><%= content %></textarea>
+           </div>
+        <div class="input-group mb-3 size">
+       <input type="hidden" name="id" value="<%= id %>" id="">
+       <input type="text" class="form-control" name="rating" value="<%= rating %>" placeholder="Rating" aria-label="Server">
+       <button  class="btn btn-success">Submit</button>
+       </div>
+     </form>
+     
+       </div>
+     </div>
+   </div>
